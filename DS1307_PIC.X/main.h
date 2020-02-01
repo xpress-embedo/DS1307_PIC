@@ -82,10 +82,20 @@ extern "C" {
 // Use project enums instead of #define for ON and OFF.
 #include <xc.h>
 #include <stdint.h>
+#include <string.h>
   
-#define _XTAL_FREQ    48000000u
-#define Delay_ms(x)   __delay_ms(x)
+#define _XTAL_FREQ        48000000u
+#define Delay_ms(x)       __delay_ms(x)
+  
+#define DISABLE_INT()     (GIE=0)
+#define ENABLE_INT()      (GIE=1)
 
+#define TRUE              1u
+#define FALSE             0u
+
+/* Public Functions Prototypes */
+void timer0_init( void );
+uint32_t millis( void );
 
 #ifdef	__cplusplus
 }

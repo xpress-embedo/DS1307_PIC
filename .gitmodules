@@ -1,3 +1,6 @@
 [submodule "DS1307_PIC.X/I2C"]
 	path = DS1307_PIC.X/I2C
 	url = https://github.com/xpress-embedo/I2C.git
+[submodule "DS1307_PIC.X/LCD16x2"]
+	path = DS1307_PIC.X/LCD16x2
+	url = https://github.com/xpress-embedo/LCD16x2.git
