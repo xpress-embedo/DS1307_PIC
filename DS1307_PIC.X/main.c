@@ -1,22 +1,23 @@
 /*
- * File:   main.c
- * Author: xpress_embedo
+ * @file i2.c
+ * @author xpress_embedo
+ * @date 1 Feb, 2020
+ * 
+ * @brief Main File of the Project
  *
- * Created on 1 February, 2020, 3:41 AM
  */
 
-
 #include "main.h"
+#include "I2C.h"
 
 void main(void) 
 {
-  TRISB = 0x00;
-  while(1)
-  {
-    LATB = 0x55;
-    __delay_ms(1000);
-    LATB = 0xAA;
-    __delay_ms(1000);
-  }
+  I2C_Init(I2C_STANDARD_SPEED);
+  Delay_ms(100);
+  I2C_Start();
+  I2C_Restart();
+  I2C_Send(0x45);
+  I2C_Stop();
+  while(1);
   return;
 }

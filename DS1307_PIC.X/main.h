@@ -1,8 +1,10 @@
-/* 
- * File:   main.h
- * Author: xpress_embedo
+/*
+ * @file main.h
+ * @author xpress_embedo
+ * @date 1 Feb, 2020
+ * 
+ * @brief 
  *
- * Created on 1 February, 2020, 3:49 AM
  */
 
 #ifndef MAIN_H
@@ -81,7 +83,8 @@ extern "C" {
 #include <xc.h>
 #include <stdint.h>
   
-#define _XTAL_FREQ  48000000u
+#define _XTAL_FREQ    48000000u
+#define Delay_ms(x)   __delay_ms(x)
 
 
 #ifdef	__cplusplus
