@@ -83,6 +83,8 @@ extern "C" {
 #include <xc.h>
 #include <stdint.h>
 #include <string.h>
+#include <stdio.h>
+#include <math.h>
   
 #define _XTAL_FREQ        48000000u
 #define Delay_ms(x)       __delay_ms(x)
@@ -94,7 +96,6 @@ extern "C" {
 #define FALSE             0u
 
 /* Public Functions Prototypes */
-void timer0_init( void );
 uint32_t millis( void );
 
 #ifdef	__cplusplus
