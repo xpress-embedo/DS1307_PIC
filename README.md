@@ -1,1 +1,1 @@
-# DS1307_PIC
+# Real Time Clock Interfacing with PIC Micro-Controller

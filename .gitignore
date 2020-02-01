@@ -1,3 +1,8 @@
+# MPLABX Specific Ignore File Updates
+/DS1307_PIC.X/build/
+/DS1307_PIC.X/dist/
+/DS1307_PIC.X/nbproject/
+
 # Prerequisites
 *.d
 
