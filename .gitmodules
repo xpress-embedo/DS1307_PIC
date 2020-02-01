@@ -4,3 +4,6 @@
 [submodule "DS1307_PIC.X/LCD16x2"]
 	path = DS1307_PIC.X/LCD16x2
 	url = https://github.com/xpress-embedo/LCD16x2.git
+[submodule "DS1307_PIC.X/DS1307"]
+	path = DS1307_PIC.X/DS1307
+	url = https://github.com/xpress-embedo/DS1307.git

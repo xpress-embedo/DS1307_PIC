@@ -9,7 +9,7 @@
 
 #include "main.h"
 #include "lcd_16x2.h"
-#include "I2C.h"
+#include "ds1307.h"
 
 /* Local Variables */
 static uint32_t millisecond = 0;
@@ -28,14 +28,46 @@ void main(void)
   LCD_Print_Line (0, lcd_msg);
   sprintf(lcd_msg, "      Laboratory");
   LCD_Print_Line (1, lcd_msg);
-  LCD_Update ();
-  Delay_ms(2000);
+  LCD_Update();
+  Delay_ms(1000);
   while(1)
   {
-    // Task-1
-    if( millis() - timestamp > 1000ul )
+    // Task-1 (500ms)
+    if( millis() - timestamp > 500ul )
     {
+      uint8_t year, month, date, hour, minute, second;
+      static uint8_t sec_blink;
       timestamp = millis();
+      second = DS1307_Read (DS1307_SEC);
+      minute = DS1307_Read (DS1307_MIN);
+      hour   = DS1307_Read (DS1307_HOUR);
+      date   = DS1307_Read (DS1307_DATE);
+      month  = DS1307_Read (DS1307_MONTH);
+      year   = DS1307_Read (DS1307_YEAR);
+      // The value Read are in BCD Format, which needs to be converted into char
+      if( sec_blink )
+      {
+        sec_blink = FALSE;
+        sprintf (lcd_msg, "TIME: %c%c:%c%c:%c%c", \
+                 BCD2UpperCh (hour), BCD2LowerCh (hour), \
+                 BCD2UpperCh (minute), BCD2LowerCh (minute), \
+                 BCD2UpperCh (second), BCD2LowerCh (second) );
+      }
+      else
+      {
+        sec_blink = TRUE;
+        sprintf (lcd_msg, "TIME: %c%c:%c%c %c%c", \
+                 BCD2UpperCh (hour), BCD2LowerCh (hour), \
+                 BCD2UpperCh (minute), BCD2LowerCh (minute), \
+                 BCD2UpperCh (second), BCD2LowerCh (second) );
+      }
+      LCD_Print_Line (0, lcd_msg);
+      sprintf (lcd_msg, "DATE: %c%c/%c%c/%c%c", \
+               BCD2UpperCh (date), BCD2LowerCh (date), \
+               BCD2UpperCh (month), BCD2LowerCh (month), \
+               BCD2UpperCh (year), BCD2LowerCh (year) );
+      LCD_Print_Line (1, lcd_msg);
+      LCD_Update ();
     }
   }
   return;
@@ -50,8 +82,8 @@ void system_init( void )
 {
   // Initialize 1ms Timer
   timer0_init ();
-  // Initialize I2C
-  I2C_Init(I2C_STANDARD_SPEED);
+  // Initialize DS1307 and Start Time
+  DS1307_Init ();
   // Initialize LCD
   LCD_Init();
   Delay_ms(100);
