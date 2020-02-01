@@ -3,6 +3,10 @@
 /DS1307_PIC.X/dist/
 /DS1307_PIC.X/nbproject/
 
+# Simulation
+*.pdsbak
+*.workspace
+
 # Prerequisites
 *.d
 

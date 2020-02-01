@@ -80,6 +80,8 @@ extern "C" {
 // Use project enums instead of #define for ON and OFF.
 #include <xc.h>
 #include <stdint.h>
+  
+#define _XTAL_FREQ  48000000u
 
 
 #ifdef	__cplusplus

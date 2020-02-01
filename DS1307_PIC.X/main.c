@@ -10,5 +10,13 @@
 
 void main(void) 
 {
+  TRISB = 0x00;
+  while(1)
+  {
+    LATB = 0x55;
+    __delay_ms(1000);
+    LATB = 0xAA;
+    __delay_ms(1000);
+  }
   return;
 }
