@@ -1,3 +1,5 @@
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/embeddedlab)
+
 # Real Time Clock Interfacing with PIC Micro-Controller
 
 ![alt text](SIM/DS1307_PIC.gif "Working Simulation")
